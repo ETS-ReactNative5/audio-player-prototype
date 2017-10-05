@@ -5,11 +5,8 @@ import './App.css'
 
 class App extends Component {
   state = {
-    playing: true
-  }
-
-  componentDidMount() {
-    console.log(this.player._howler);
+    playing: false,
+    loaded: false,
   }
 
   handlePlay = (e) => {
@@ -28,6 +25,16 @@ class App extends Component {
     })
   }
 
+  handleLoad = () => {
+    this.setState({
+      loaded: true
+    })
+  }
+
+  loading = () => {
+    return !this.state.loaded && this.state.playing
+  }
+
   render() {
     return (
       <div className="App">
@@ -37,12 +44,14 @@ class App extends Component {
           <p className='subheading'>Only play/pause button</p>
           <div>
             <Howler
-              src={['sound.ogg']}
+              src={['http://s3.amazonaws.com/americantheatrewing.org/media/downstage/mp3/Episode141.mp3']}
+              html5={true}
+              preload={false}
               playing={this.state.playing}
               ref={p => this.player = p}
-              onPlay={() => console.log('play!')}
-              onLoadError={console.warn}
+              onLoad={this.handleLoad}
             />
+            {this.loading() ? 'Loading...' : ''}
             <a onClick={this.handlePlay}>Play</a>
             <a onClick={this.handlePause}>Pause</a>
           </div>
