@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Howler from 'react-howler'
+import raf from 'raf'
 
 import './App.css'
 
@@ -7,6 +8,18 @@ class App extends Component {
   state = {
     playing: false,
     loaded: false,
+  }
+
+  componentWillUnmount() {
+    this.clearRAF()
+  }
+
+  handleToggle = (e) => {
+    if (this.state.playing) {
+      return this.handlePause(e)
+    } else {
+      return this.handlePlay(e)
+    }
   }
 
   handlePlay = (e) => {
@@ -27,12 +40,38 @@ class App extends Component {
 
   handleLoad = () => {
     this.setState({
-      loaded: true
+      loaded: true,
+      duration: this.player.duration(),
     })
+    this.renderSeekPos()
+  }
+
+  renderSeekPos = () => {
+    this.setState({
+      seek: this.player.seek()
+    })
+
+    if (this.state.playing) {
+      this._raf = raf(this.renderSeekPos)
+    }
+  }
+
+  clearRAF = () => {
+    raf.cancel(this._raf)
   }
 
   loading = () => {
     return !this.state.loaded && this.state.playing
+  }
+
+  seek = () => {
+    return (
+      <div className="seek">
+        {this.state.seek !== undefined ? this.state.seek.toFixed(2) : '0.00'}
+        {' / '}
+        {this.state.duration ? this.state.duration.toFixed(2) : 'NaN'}
+      </div>
+    )
   }
 
   render() {
@@ -52,6 +91,7 @@ class App extends Component {
               onLoad={this.handleLoad}
             />
             {this.loading() ? 'Loading...' : ''}
+            {this.seek()}
             <a onClick={this.handlePlay}>Play</a>
             <a onClick={this.handlePause}>Pause</a>
           </div>
