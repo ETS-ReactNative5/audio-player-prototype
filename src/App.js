@@ -44,7 +44,7 @@ class App extends Component {
           <p className='subheading'>Only play/pause button</p>
           <div>
             <Howler
-              src={['http://s3.amazonaws.com/americantheatrewing.org/media/downstage/mp3/Episode141.mp3']}
+              src={['https://s3-sa-east-1.amazonaws.com/trapmp3/Episode141.mp3']}
               html5={true}
               preload={false}
               playing={this.state.playing}
