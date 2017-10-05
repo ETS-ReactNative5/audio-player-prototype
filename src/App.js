@@ -8,6 +8,7 @@ class App extends Component {
   state = {
     playing: false,
     loaded: false,
+    seek: 0,
   }
 
   componentWillUnmount() {
@@ -28,6 +29,7 @@ class App extends Component {
     this.setState({
       playing: true,
     })
+    this.renderSeekPos()
   }
 
   handlePause = (e) => {
@@ -36,12 +38,12 @@ class App extends Component {
     this.setState({
       playing: false,
     })
+    this.clearRAF()
   }
 
   handleLoad = () => {
     this.setState({
       loaded: true,
-      duration: this.player.duration(),
     })
     this.renderSeekPos()
   }
@@ -64,12 +66,21 @@ class App extends Component {
     return !this.state.loaded && this.state.playing
   }
 
+  handleSeekChange = (e) => {
+    const newSeek = parseFloat(e.target.value)
+
+    this.player.seek(newSeek)
+    this.setState({
+      seek: newSeek
+    })
+    if(this._raf) this.clearRAF()
+    this.renderSeekPos()
+  }
+
   seek = () => {
     return (
       <div className="seek">
         {this.state.seek !== undefined ? this.state.seek.toFixed(2) : '0.00'}
-        {' / '}
-        {this.state.duration ? this.state.duration.toFixed(2) : 'NaN'}
       </div>
     )
   }
@@ -85,13 +96,28 @@ class App extends Component {
             <Howler
               src={['https://s3-sa-east-1.amazonaws.com/trapmp3/Episode141.mp3']}
               html5={true}
-              preload={false}
               playing={this.state.playing}
               ref={p => this.player = p}
               onLoad={this.handleLoad}
             />
             {this.loading() ? 'Loading...' : ''}
-            {this.seek()}
+            {
+              this.state.loaded && (
+                <label>
+                  <span className='slider-container'>
+                    <input
+                      type='range'
+                      min='0'
+                      max={this.state.duration}
+                      step='.05'
+                      value={this.state.seek}
+                      onChange={this.handleSeekChange}
+                    />
+                    {this.seek()}
+                  </span>
+                </label>
+              )
+            }
             <a onClick={this.handlePlay}>Play</a>
             <a onClick={this.handlePause}>Pause</a>
           </div>
