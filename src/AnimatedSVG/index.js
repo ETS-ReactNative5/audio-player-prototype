@@ -13,8 +13,6 @@ export default class AnimatedSVG extends Component {
   }
 
   animate = (svg) => {
-    console.log(svg);
-
     const paths = Array.from(svg.querySelectorAll('path'))
 
     paths.forEach(path => {
