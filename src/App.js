@@ -28,8 +28,7 @@ class App extends Component {
 
     this.setState({
       playing: true,
-    })
-    this.renderSeekPos()
+    }, this.renderSeekPos)
   }
 
   handlePause = (e) => {
@@ -45,10 +44,13 @@ class App extends Component {
     this.setState({
       loaded: true,
     })
-    this.renderSeekPos()
   }
 
   renderSeekPos = () => {
+    if (this._raf) {
+      this.clearRAF()
+    }
+
     this.setState({
       seek: this.player.seek()
     })
@@ -63,7 +65,7 @@ class App extends Component {
   }
 
   loading = () => {
-    return !this.state.loaded && this.state.playing
+    return !this.state.loaded
   }
 
   handleSeekChange = (e) => {
@@ -73,8 +75,6 @@ class App extends Component {
     this.setState({
       seek: newSeek
     })
-    if(this._raf) this.clearRAF()
-    this.renderSeekPos()
   }
 
   seek = () => {
