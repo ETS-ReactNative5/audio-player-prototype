@@ -1,0 +1,7 @@
+.MediaPlayer .buttons {
+  width: 15vw;
+  height: 15vw;
+
+  border-radius: 50%;
+  background-color: #FFF;
+}
