@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Howler from 'react-howler'
-import ReactSVG from 'react-svg'
 import raf from 'raf'
 
 import PlayButton from '../PlayButton'
+import AnimatedSVG from '../AnimatedSVG'
 
 import playerBubble from './player-bubble.svg'
 import './styles.css'
@@ -121,7 +121,7 @@ class MediaPlayer extends Component {
           onLoadError={this.props.onLoadError}
           onEnd={this.props.onEnd}
         />
-        <ReactSVG path={playerBubble} />
+        <AnimatedSVG path={playerBubble} />
         <div className="buttons">
           {
             this.state.loaded && <PlayButton
