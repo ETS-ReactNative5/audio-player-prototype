@@ -6,4 +6,25 @@
 
   width: 100vw;
   height: 100vh;
+
+  background-color: #D7E5EF;
+}
+
+.info {
+	text-align: center;
+	margin-top: -4vw;
+}
+
+#bg-left {
+	position: absolute;
+	width: 25vw;
+	left: 4vw;
+	bottom: -10vw;
+}
+
+#bg-right {
+	position: absolute;
+	width: 32vw;
+	right: 2vw;
+	bottom: -18vw;
 }

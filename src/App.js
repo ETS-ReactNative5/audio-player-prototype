@@ -8,7 +8,7 @@ import rightBubbles from './right-bubbles.svg'
 import './App.css'
 
 class App extends Component {
-  render() {
+  render() {  
     return (
       <div className="App">
         <section style={{positive: 'relative'}}>
