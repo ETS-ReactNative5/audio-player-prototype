@@ -3,6 +3,10 @@ import PropTypes from 'prop-types'
 import Howler from 'react-howler'
 import raf from 'raf'
 
+import PlayButton from '../PlayButton'
+
+import './styles.css'
+
 class MediaPlayer extends Component {
   state = {
     playing: false,
@@ -101,14 +105,6 @@ class MediaPlayer extends Component {
     )
   }
 
-  playMessage = () => {
-    if (this.state.playing) {
-      return 'Pause'
-    } else {
-      return 'Play'
-    }
-  }
-
   render() {
     return (
       <div className="MediaPlayer" style={{ textAlign: 'center' }}>
@@ -118,27 +114,19 @@ class MediaPlayer extends Component {
           playing={this.state.playing}
           ref={p => this.player = p}
           onLoad={this.handleLoad}
+          onPlay={this.props.onPlay}
+          onPause={this.props.onPause}
+          onLoadError={this.props.onLoadError}
+          onEnd={this.props.onEnd}
         />
-        {
-          this.state.loaded
-          ? <div>
-              <label>
-                <span className='slider-container'>
-                  <input
-                    type='range'
-                    min='0'
-                    max={this.state.duration}
-                    step='.05'
-                    value={this.state.seek}
-                    onChange={this.handleSeekChange}
-                  />
-                  {this.seek()}
-                </span>
-              </label>
-              <a onClick={this.handleToggle}>{this.playMessage()}</a>
-            </div>
-          : 'Loading...'
-        }
+        <div className="buttons">
+          {
+            this.state.loaded && <PlayButton
+                className={this.state.playing ? '-playing' : ''}
+                onClick={this.handleToggle}
+              />
+          }
+        </div>
       </div>
     )
   }

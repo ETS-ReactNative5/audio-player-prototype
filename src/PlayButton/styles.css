@@ -1,0 +1,61 @@
+.buttons {
+  position: absolute;
+  z-index: 2;
+  top: 53%;
+  left: 50%;
+
+  width: 15vw;
+  height: 15vw;
+
+  transform: translate(-46%, -50%);
+
+  border-radius: 50%;
+  background-color: #FFF;
+}
+
+.PlayButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.PlayButton::after {
+  position: absolute;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  content: '';
+
+  border: 4px solid #384D9D;
+  border-radius: 50%;
+}
+
+.PlayButton #play,
+.PlayButton.-playing #pause {
+  opacity: 1;
+}
+
+.PlayButton #pause,
+.PlayButton.-playing #play {
+  opacity: 0;
+}
+
+.PlayButton .visual {
+  position: absolute;
+
+  display: block;
+
+  width: 2vw;
+  height: 4vw;
+  margin-left: 3%;
+}
+
+.PlayButton.-playing .visual {
+  margin: 0;
+}

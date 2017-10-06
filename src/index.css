@@ -1,5 +1,20 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+.info {
+	text-align: center;
+	margin-top: -4vw;
+}
+
+#bg-left {
+	position: absolute;
+	z-index: -1;
+	width: 25vw;
+	left: 4vw;
+	bottom: -10vw;
+}
+
+#bg-right {
+	position: absolute;
+	z-index: -1;
+	width: 32vw;
+	right: 2vw;
+	bottom: -18vw;
 }
