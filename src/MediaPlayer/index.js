@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Howler from 'react-howler'
+import ReactSVG from 'react-svg'
 import raf from 'raf'
 
 import PlayButton from '../PlayButton'
 
+import playerBubble from './player-bubble.svg'
 import './styles.css'
 
 class MediaPlayer extends Component {
@@ -107,7 +109,7 @@ class MediaPlayer extends Component {
 
   render() {
     return (
-      <div className="MediaPlayer" style={{ textAlign: 'center' }}>
+      <div className="MediaPlayer">
         <Howler
           src={this.props.src}
           html5={true}
@@ -119,6 +121,7 @@ class MediaPlayer extends Component {
           onLoadError={this.props.onLoadError}
           onEnd={this.props.onEnd}
         />
+        <ReactSVG path={playerBubble} />
         <div className="buttons">
           {
             this.state.loaded && <PlayButton

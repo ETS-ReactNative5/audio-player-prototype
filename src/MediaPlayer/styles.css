@@ -1,7 +1,36 @@
-.scene {
-	position: relative;
-	width: 80vw;
-	display: block;
-	margin: 0 auto;
-	margin-top: -2vw;
+.MediaPlayer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30vw;
+  height: 30vw;
+
+  transform: translate(-50%, -50%);
+}
+
+.MediaPlayer .buttons {
+  width: 15vw;
+  height: 15vw;
+
+  border-radius: 50%;
+  background-color: #FFF;
+}
+
+.MediaPlayer .scene {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+  z-index: -1;
+
+  width: 45vw;
+  height: 45vw;
+
+  display: block;
 }

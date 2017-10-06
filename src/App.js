@@ -8,10 +8,10 @@ import rightBubbles from './right-bubbles.svg'
 import './App.css'
 
 class App extends Component {
-  render() {  
+  render() {
     return (
       <div className="App">
-        <section style={{positive: 'relative'}}>
+        <section>
           <ReactSVG path={leftBubbles} />
           <MediaPlayer src={['https://s3-sa-east-1.amazonaws.com/trapmp3/Episode141.mp3']} />
           <ReactSVG path={rightBubbles} />
