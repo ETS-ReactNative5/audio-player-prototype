@@ -2963,6 +2963,12 @@ he@1.1.x:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
 
+hls.js@^0.8.5:
+  version "0.8.5"
+  resolved "https://registry.yarnpkg.com/hls.js/-/hls.js-0.8.5.tgz#1f76a0db72ab9eaeca788d282bcf0f1cd7443f41"
+  dependencies:
+    url-toolkit "^2.0.1"
+
 hmac-drbg@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
@@ -2995,10 +3001,6 @@ homedir-polyfill@^1.0.1:
 hosted-git-info@^2.1.4:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.5.0.tgz#6d60e34b3abbc8313062c3b798ef8d901a07af3c"
-
-howler@^2.0.0:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/howler/-/howler-2.0.4.tgz#cbd5db875f9833e1aa6084568951d788fc687f92"
 
 hpack.js@^2.1.6:
   version "2.1.6"
@@ -5029,7 +5031,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.6, prop-types@^15.6.0:
+prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -5190,13 +5192,6 @@ react-error-overlay@^2.0.2:
     react-dom "^15 || ^16"
     settle-promise "1.0.0"
     source-map "0.5.6"
-
-react-howler@^3.6.3:
-  version "3.6.3"
-  resolved "https://registry.yarnpkg.com/react-howler/-/react-howler-3.6.3.tgz#ddad38ba59372bcf567e32dbb517d3541063de12"
-  dependencies:
-    howler "^2.0.0"
-    prop-types "^15.5.6"
 
 react-scripts@1.0.14:
   version "1.0.14"
@@ -6303,6 +6298,10 @@ url-parse@^1.1.8:
   dependencies:
     querystringify "~1.0.0"
     requires-port "1.0.x"
+
+url-toolkit@^2.0.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/url-toolkit/-/url-toolkit-2.1.1.tgz#96c2da3cd672df1aa2ac7fc89240b2dcf5c99a80"
 
 url@^0.11.0:
   version "0.11.0"

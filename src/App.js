@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <div className="App">
         <AnimatedSVG path={leftBubbles} />
-        <AnimatedMediaPlayer src={['http://d1qku3w3cvcbac.cloudfront.net/Episode141.mp3']} />
+        <AnimatedMediaPlayer src="https://s3.amazonaws.com/streamp3/cultive-test-.m3u8" />
         <AnimatedSVG path={rightBubbles} />
       </div>
     )
