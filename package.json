@@ -7,10 +7,10 @@
   },
   "dependencies": {
     "animejs": "^2.2.0",
+    "hls.js": "^0.8.5",
     "raf": "^3.4.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-howler": "^3.6.3",
     "react-svg": "^2.1.22"
   },
   "scripts": {

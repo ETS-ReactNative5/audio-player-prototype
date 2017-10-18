@@ -1,3 +1,7 @@
+.MediaPlayer video {
+  display: none;
+}
+
 .MediaPlayer .buttons {
   width: 15vw;
   height: 15vw;

@@ -11,9 +11,13 @@ export default class PlayButton extends Component {
     onClick: PropTypes.func,
   }
 
+  playing = () => {
+    return this.props.playing ? '-playing' : ''
+  }
+
   render() {
     return (
-      <div className={`PlayButton ${this.props.className}`} onClick={this.props.onClick}>
+      <div className={`PlayButton ${this.playing()}`} onClick={this.props.onClick}>
         <div className="visual">
           <ReactSVG className="visual" path={visualFeedback} />
         </div>
