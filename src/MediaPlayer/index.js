@@ -91,9 +91,12 @@ class MediaPlayer extends Component {
       return (
         <div className="MediaPlayer">
           <video ref={v => this.video = v} />
-          <PlayButton
-            onClick={this.togglePlay}
-          />
+          <div className="buttons">
+            <PlayButton
+              playing={this.state.playing}
+              onClick={this.togglePlay}
+            />
+          </div>
         </div>
       )
     } else {
