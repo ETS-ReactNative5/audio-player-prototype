@@ -1,11 +1,44 @@
-.MediaPlayer video {
+.MediaPlayer {
+  position: relative;
+}
+
+.MediaPlayer > video {
   display: none;
 }
 
-.MediaPlayer .buttons {
+.MediaPlayer > .buttons {
   width: 15vw;
   height: 15vw;
 
   border-radius: 50%;
   background-color: #FFF;
+}
+
+.MediaPlayer > .info {
+  position: absolute;
+  top: 30vw;
+  left: 50%;
+
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.MediaPlayer > .info > .title {
+  font-family: NHaasGroteskDSPro-45Lt;
+  font-size: 36px;
+  font-weight: normal;
+
+  letter-spacing: 6px;
+
+  opacity: .8;
+  color: #3C485E;
+}
+
+.MediaPlayer > .info > .time {
+  font-family: NHaasGroteskTXPro-55Rg;
+  font-size: 13px;
+
+  letter-spacing: 1px;
+
+  color: #A3A3A3;
 }

@@ -1,6 +1,6 @@
 .AnimatedMediaPlayer {
   position: absolute;
-  top: 50%;
+  top: 14%;
   left: 50%;
 
   display: flex;
@@ -10,7 +10,7 @@
   width: 30vw;
   height: 30vw;
 
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
 }
 
 .AnimatedMediaPlayer .scene {

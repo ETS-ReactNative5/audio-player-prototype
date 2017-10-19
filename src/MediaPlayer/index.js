@@ -112,7 +112,10 @@ class MediaPlayer extends Component {
               onClick={this.togglePlay}
             />
           </div>
-          {this.state.currentTime.toFixed(2)}
+          <div className="info">
+            <h1 className="title">Focado</h1>
+            {this.state.currentTime.toFixed(2)}
+          </div>
         </div>
       )
     } else {
