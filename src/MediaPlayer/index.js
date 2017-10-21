@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Hls from 'hls.js'
 import raf from 'raf'
+import Spinner from 'react-spinkit'
 
 import PlayButton from '../PlayButton'
 
@@ -35,6 +36,10 @@ class MediaPlayer extends Component {
     })
 
     this.hls.on(Hls.Events.ERROR, this.handleError)
+
+    this.video.ondurationchange = () => {
+      this.setState({ duration: this.video.duration, ready: true })
+    }
   }
 
   componentWillUnmount() {
@@ -101,20 +106,41 @@ class MediaPlayer extends Component {
     }
   }
 
+  remainingTime = () => {
+    const { currentTime, duration } = this.state
+    const remaining = duration - currentTime
+
+    const minutes = parseInt(remaining / 60, 10) || 0
+    const seconds = parseInt(remaining % 60, 10) || 0
+
+    return {minutes, seconds}
+  }
+
+  paddedSeconds = () => {
+    return ('00' + this.remainingTime().seconds).slice(-2)
+  }
+
   render() {
     if (Hls.isSupported()) {
       return (
         <div className="MediaPlayer">
           <video ref={v => this.video = v} />
           <div className="buttons">
-            <PlayButton
-              playing={this.state.playing}
-              onClick={this.togglePlay}
-            />
+            {
+              this.state.ready
+              ? <PlayButton
+                  playing={this.state.playing}
+                  onClick={this.togglePlay}
+                />
+              : <Spinner name="chasing-dots" className="loading" />
+            }
+
           </div>
           <div className="info">
             <h1 className="title">Focado</h1>
-            {this.state.currentTime.toFixed(2)}
+            <p className="time">
+              {this.remainingTime().minutes}:{this.paddedSeconds()} min
+            </p>
           </div>
         </div>
       )

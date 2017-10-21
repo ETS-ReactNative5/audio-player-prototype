@@ -11,6 +11,7 @@
     "raf": "^3.4.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-spinkit": "^3.0.0",
     "react-svg": "^2.1.22"
   },
   "scripts": {

@@ -7,11 +7,19 @@
 }
 
 .MediaPlayer > .buttons {
+  position: relative;
+
   width: 15vw;
   height: 15vw;
 
   border-radius: 50%;
   background-color: #FFF;
+}
+
+.MediaPlayer > .buttons > .loading {
+  position: absolute;
+  top: calc(50% - 13.5px);
+  left: calc(50% - 13.5px);
 }
 
 .MediaPlayer > .info {
@@ -39,6 +47,7 @@
   font-size: 13px;
 
   letter-spacing: 1px;
+  text-transform: uppercase;
 
   color: #A3A3A3;
 }
