@@ -81,12 +81,12 @@ class MediaPlayer extends Component {
     const { type, details } = data
 
     switch(type) {
-      case hls.ErrorTypes.NETWORK_ERROR:
+      case 'networkError':
         console.error(`Network error: ${details}`)
         hls.startLoad()
         break
 
-      case hls.ErrorTypes.MEDIA_ERROR:
+      case 'mediaError':
         console.error(`Media error: ${details}`)
         if (this.recoveringMediaError) {
           hls.swapAudioCodec() // work around audio codec mismatch
@@ -97,7 +97,7 @@ class MediaPlayer extends Component {
         hls.recoverMediaError()
         break
 
-      case hls.ErrorTypes.OTHER_ERROR:
+      case 'otherError':
       default:
         console.error(`Unknown error: ${details}`)
         console.error('Fatal error! Cannot recover :\'(')
@@ -122,14 +122,17 @@ class MediaPlayer extends Component {
 
   render() {
     if (Hls.isSupported()) {
+      const { currentTime, duration, ready, playing } = this.state
+
       return (
         <div className="MediaPlayer">
           <video ref={v => this.video = v} />
           <div className="buttons">
             {
-              this.state.ready
+              ready
               ? <PlayButton
-                  playing={this.state.playing}
+                  seek={currentTime / duration}
+                  playing={playing}
                   onClick={this.togglePlay}
                 />
               : <Spinner name="chasing-dots" className="loading" />
